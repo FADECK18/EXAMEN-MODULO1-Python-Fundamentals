@@ -11,6 +11,8 @@ modulos = st.sidebar.selectbox(
 if modulos == "Home":
 
     st.title("APLICACIÓN EN STREAMLIT")
+    st.markdown("<h1 align='center'>APLICACIÓN EN STREAMLIT</h1>", unsafe_allow_html=True)
+
     st.image("foto de python.jpg")
     st.write("**Docente**: Carlos Carrillo Villavicencio")
 
