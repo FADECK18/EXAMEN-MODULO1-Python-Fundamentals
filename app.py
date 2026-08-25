@@ -35,11 +35,6 @@ if modulos == "Home":
 
 elif modulos == "Ejercicio 1":
 
-    st.title("Ejercicio 1")
-    st.markdown("Bienvenido al **Ejercicio 1**")
-
-elif modulos == "Ejercicio 1":
-
     st.title("Ejercicio 1 - Flujo de caja con listas")
 
     st.markdown(
