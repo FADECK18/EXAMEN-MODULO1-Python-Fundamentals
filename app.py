@@ -1,16 +1,11 @@
 import streamlit as st
 
-st.title("PROYECTO 1 - APLICACIÓN EN STREAMLIT")
 st.sidebar.title("Módulo")
-
-st.write("Elaborado por: Farid Estefano Garibay Fabian")
-
 st.sidebar.image("IMAGEN DMC.png", width=100)
 
 modulos = st.sidebar.selectbox(
     "Seleccione un módulo:",
-    ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"]
-)
+    ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
 
 if modulos == "Home":
 
