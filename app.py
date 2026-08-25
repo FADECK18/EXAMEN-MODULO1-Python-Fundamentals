@@ -213,11 +213,9 @@ elif modulos == "Ejercicio 4":
     Crear, Leer, Actualizar y Eliminar.
     """)
 
-    # Crear lista de inventario
     if "inventario" not in st.session_state:
         st.session_state.inventario = []
 
-    # CREAR
     st.subheader("Crear producto")
 
     nombre = st.text_input("Nombre del producto:")
@@ -257,73 +255,3 @@ elif modulos == "Ejercicio 4":
         st.session_state.inventario.append(producto)
 
         st.success("Producto agregado correctamente.")
-
-    # LEER
-    st.subheader("Productos registrados")
-
-    datos = []
-
-    for producto in st.session_state.inventario:
-        datos.append(producto.resumen())
-
-    df = pd.DataFrame(datos)
-
-    st.dataframe(df)
-
-    # ACTUALIZAR
-    st.subheader("Actualizar producto")
-
-    if len(st.session_state.inventario) > 0:
-
-        nombres = []
-
-        for producto in st.session_state.inventario:
-            nombres.append(producto.nombre)
-
-        producto_seleccionado = st.selectbox(
-            "Seleccione el producto:",
-            nombres
-        )
-
-        nuevo_stock = st.number_input(
-            "Nuevo stock:",
-            min_value=0,
-            step=1
-        )
-
-        if st.button("Actualizar stock"):
-
-            for producto in st.session_state.inventario:
-
-                if producto.nombre == producto_seleccionado:
-
-                    producto.stock_actual = nuevo_stock
-
-                    st.success(
-                        "Producto actualizado correctamente."
-                    )
-
-    # ELIMINAR
-    st.subheader("Eliminar producto")
-
-    if len(st.session_state.inventario) > 0:
-
-        producto_eliminar = st.selectbox(
-            "Seleccione el producto a eliminar:",
-            nombres,
-            key="eliminar"
-        )
-
-        if st.button("Eliminar producto"):
-
-            for producto in st.session_state.inventario:
-
-                if producto.nombre == producto_eliminar:
-
-                    st.session_state.inventario.remove(producto)
-
-                    st.success(
-                        "Producto eliminado correctamente."
-                    )
-
-   
