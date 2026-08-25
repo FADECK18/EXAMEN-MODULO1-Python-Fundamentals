@@ -49,5 +49,4 @@ elif modulos == "Ejercicio 4":
 
     st.subheader("🚀 Ejercicio 4")
     st.markdown(
-        """
         ### Desarrollo del Ejercicio 4
