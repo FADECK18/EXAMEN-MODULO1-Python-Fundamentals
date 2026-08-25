@@ -1,19 +1,25 @@
 import streamlit as st
 
+st.title("PROYECTO 1 - APLICACIÓN EN STREAMLIT")
 st.sidebar.title("Módulo")
-st.sidebar.image("IMAGEN DMC.png", width=200)
+
+st.write("Elaborado por: Farid Estefano Garibay Fabian")
+
+st.sidebar.image("IMAGEN DMC.png", width=100)
 
 modulos = st.sidebar.selectbox(
     "Seleccione un módulo:",
-    ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
+    ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"]
+)
 
 if modulos == "Home":
 
-st.title("Proyecto Python for Analytics")
-st.image("foto de python.jpg", width=450)
+    st.title("PROYECTO 1 - APLICACIÓN EN STREAMLIT")
 
-st.write("### Nombre completo del estudiante")
-st.write("Farid Estefano Garibay Fabian")
+    st.image("foto de python.jpg", width=450)
+
+    st.write("### Nombre completo del estudiante")
+    st.write("Farid Estefano Garibay Fabian")
 
     st.write("### Nombre del módulo")
     st.write("Python Fundamentals")
@@ -22,7 +28,8 @@ st.write("Farid Estefano Garibay Fabian")
     st.write(
         "Soy contador y busco especializarme en análisis de datos "
         "para combinar mi experiencia financiera con nuevas herramientas "
-        "tecnológicas y así potenciar mi perfil profesional.")
+        "tecnológicas y así potenciar mi perfil profesional."
+    )
 
     st.write("### Año")
     st.write("2026")
