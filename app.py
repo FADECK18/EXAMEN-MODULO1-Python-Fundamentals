@@ -40,14 +40,7 @@ elif modulos == "Ejercicio 1":
 
     st.title("Ejercicio 1 - Flujo de caja con listas")
 
-    st.markdown(
-        """
-        En este ejercicio se registrarán movimientos financieros utilizando una lista.
-        Cada movimiento tendrá un concepto, un tipo de movimiento y un valor.
-        El sistema calculará el total de ingresos, el total de gastos y el saldo final
-        del flujo de caja.
-        """
-    )
+    st.markdown("""En este ejercicio se registrarán movimientos financieros utilizando una lista. Cada movimiento tendrá un concepto, un tipo de movimiento y un valor. El sistema calculará el total de ingresos, el total de gastos y el saldo final del flujo de caja.""")
 
     # Crear la lista de movimientos
     if "movimientos" not in st.session_state:
@@ -56,10 +49,7 @@ elif modulos == "Ejercicio 1":
     # Ingreso de datos
     concepto = st.text_input("Ingrese el concepto:")
 
-    tipo = st.selectbox(
-        "Seleccione el tipo de movimiento:",
-        ["Ingreso", "Gasto"]
-    )
+    tipo = st.selectbox("Seleccione el tipo de movimiento:",["Ingreso", "Gasto"])
 
     valor = st.number_input(
         "Ingrese el valor:",
