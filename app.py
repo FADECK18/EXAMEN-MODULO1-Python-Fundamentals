@@ -51,11 +51,7 @@ elif modulos == "Ejercicio 1":
 
     tipo = st.selectbox("Seleccione el tipo de movimiento:",["Ingreso", "Gasto"])
 
-    valor = st.number_input(
-        "Ingrese el valor:",
-        min_value=0.0,
-        step=0.01
-    )
+    valor = st.number_input("Ingrese el valor:",min_value=0.0,step=0.01)
 
     # Botón para agregar movimiento
     if st.button("Agregar movimiento"):
@@ -67,11 +63,7 @@ elif modulos == "Ejercicio 1":
             st.error("Ingrese un valor mayor a 0.")
 
         else:
-            movimiento = {
-                "Concepto": concepto,
-                "Tipo": tipo,
-                "Valor": valor
-            }
+            movimiento = {"Concepto": concepto,"Tipo": tipo,"Valor": valor}
 
             st.session_state.movimientos.append(movimiento)
 
