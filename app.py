@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from libreria_funciones_proyecto1 import calcular_cuota_prestamo_frances
+from libreria_clases_proyecto1 import InventarioProducto
 
 st.sidebar.title("Módulo")
 
@@ -203,7 +204,122 @@ elif modulos == "Ejercicio 3":
 
     st.dataframe(df_historico)
 
+
 elif modulos == "Ejercicio 4":
 
-    st.title("Ejercicio 4")
-    st.markdown("Bienvenido al **Ejercicio 4**")
+    st.title("Ejercicio 4 - Inventario con CRUD")
+
+    st.markdown("""
+    En este ejercicio se utilizará la clase InventarioProducto de una
+    librería externa para gestionar productos de inventario mediante
+    operaciones CRUD: Crear, Leer, Actualizar y Eliminar.
+    """)
+
+    # Crear lista de productos
+    if "inventario" not in st.session_state:
+        st.session_state.inventario = []
+
+    st.subheader("Crear producto")
+
+    nombre = st.text_input("Nombre del producto:")
+
+    costo = st.number_input(
+        "Costo unitario:",
+        min_value=0.01
+    )
+
+    precio = st.number_input(
+        "Precio unitario:",
+        min_value=0.01
+    )
+
+    stock = st.number_input(
+        "Stock actual:",
+        min_value=0,
+        step=1
+    )
+
+    stock_minimo = st.number_input(
+        "Stock mínimo:",
+        min_value=0,
+        step=1
+    )
+
+    if st.button("Agregar producto"):
+
+        producto = InventarioProducto(
+            nombre,
+            costo,
+            precio,
+            stock,
+            stock_minimo
+        )
+
+        st.session_state.inventario.append(producto)
+
+        st.success("Producto agregado correctamente.")
+
+    # LEER
+    st.subheader("Productos registrados")
+
+    datos = []
+
+    for producto in st.session_state.inventario:
+
+        datos.append(producto.resumen())
+
+    df = pd.DataFrame(datos)
+
+    st.dataframe(df)
+
+    # ACTUALIZAR
+    st.subheader("Actualizar producto")
+
+    if len(st.session_state.inventario) > 0:
+
+        nombres = []
+
+        for producto in st.session_state.inventario:
+            nombres.append(producto.nombre)
+
+        producto_seleccionado = st.selectbox(
+            "Seleccione el producto:",
+            nombres
+        )
+
+        nuevo_stock = st.number_input(
+            "Nuevo stock:",
+            min_value=0,
+            step=1
+        )
+
+        if st.button("Actualizar stock"):
+
+            for producto in st.session_state.inventario:
+
+                if producto.nombre == producto_seleccionado:
+
+                    producto.stock_actual = nuevo_stock
+
+                    st.success("Producto actualizado correctamente.")
+
+    # ELIMINAR
+    st.subheader("Eliminar producto")
+
+    if len(st.session_state.inventario) > 0:
+
+        producto_eliminar = st.selectbox(
+            "Seleccione el producto a eliminar:",
+            nombres,
+            key="eliminar"
+        )
+
+        if st.button("Eliminar producto"):
+
+            for producto in st.session_state.inventario:
+
+                if producto.nombre == producto_eliminar:
+
+                    st.session_state.inventario.remove(producto)
+
+                    st.success("Producto eliminado correctamente.")
