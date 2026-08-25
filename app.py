@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from libreria_funciones_proyecto1 import calcular_cuota_prestamo_frances
-from libreria_clases_proyecto1 import InventarioProducto
 
 st.sidebar.title("Módulo")
 
@@ -204,6 +203,8 @@ elif modulos == "Ejercicio 3":
 
     st.dataframe(df_historico)
 
+from libreria_clases_proyecto1 import InventarioProducto
+import pandas as pd
 
 elif modulos == "Ejercicio 4":
 
