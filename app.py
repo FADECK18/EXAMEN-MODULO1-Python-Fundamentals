@@ -1,7 +1,8 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
+
 from libreria_funciones_proyecto1 import calcular_cuota_prestamo_frances
+from libreria_clases_proyecto1 import Empleado
 
 st.sidebar.title("Módulo")
 
@@ -202,3 +203,179 @@ elif modulos == "Ejercicio 3":
     st.subheader("Histórico de resultados")
 
     st.dataframe(df_historico)
+
+elif modulos == "Ejercicio 4":
+
+    st.title("Ejercicio 4 - Registro de empleados con CRUD")
+
+    st.markdown("""
+    En este ejercicio se utilizará la clase Empleado desde una
+    librería externa para registrar empleados y calcular su bono,
+    descuento y salario neto. Se implementarán las operaciones
+    CRUD: Crear, Leer, Actualizar y Eliminar.
+    """)
+
+    # Crear lista de empleados
+    if "empleados" not in st.session_state:
+        st.session_state.empleados = []
+
+
+    # =====================================================
+    # CREAR
+    # =====================================================
+
+    st.subheader("Crear empleado")
+
+    nombre = st.text_input(
+        "Nombre del empleado:"
+    )
+
+    salario = st.number_input(
+        "Salario base:",
+        min_value=0.01,
+        step=100.0
+    )
+
+    bono = st.number_input(
+        "Porcentaje de bono (%):",
+        min_value=0.0,
+        max_value=100.0,
+        step=1.0
+    )
+
+    descuento = st.number_input(
+        "Porcentaje de descuento (%):",
+        min_value=0.0,
+        max_value=100.0,
+        step=1.0
+    )
+
+
+    if st.button("Agregar empleado"):
+
+        if nombre == "":
+            st.error("Ingrese el nombre del empleado.")
+
+        else:
+
+            empleado = Empleado(
+                nombre,
+                salario,
+                bono,
+                descuento
+            )
+
+            st.session_state.empleados.append(
+                empleado
+            )
+
+            st.success(
+                "Empleado agregado correctamente."
+            )
+
+
+    # =====================================================
+    # LEER
+    # =====================================================
+
+    st.subheader("Empleados registrados")
+
+    datos = []
+
+    for empleado in st.session_state.empleados:
+
+        datos.append(
+            empleado.resumen()
+        )
+
+    df = pd.DataFrame(datos)
+
+    st.dataframe(df)
+
+
+    # =====================================================
+    # ACTUALIZAR
+    # =====================================================
+
+    st.subheader("Actualizar empleado")
+
+    if len(st.session_state.empleados) > 0:
+
+        nombres = []
+
+        for empleado in st.session_state.empleados:
+
+            nombres.append(
+                empleado.nombre
+            )
+
+        empleado_seleccionado = st.selectbox(
+            "Seleccione el empleado:",
+            nombres
+        )
+
+        nuevo_salario = st.number_input(
+            "Nuevo salario base:",
+            min_value=0.01,
+            step=100.0
+        )
+
+        nuevo_bono = st.number_input(
+            "Nuevo porcentaje de bono (%):",
+            min_value=0.0,
+            max_value=100.0,
+            step=1.0
+        )
+
+        nuevo_descuento = st.number_input(
+            "Nuevo porcentaje de descuento (%):",
+            min_value=0.0,
+            max_value=100.0,
+            step=1.0
+        )
+
+        if st.button("Actualizar empleado"):
+
+            for empleado in st.session_state.empleados:
+
+                if empleado.nombre == empleado_seleccionado:
+
+                    empleado.salario_base = nuevo_salario
+
+                    empleado.porcentaje_bono = nuevo_bono
+
+                    empleado.porcentaje_descuento = nuevo_descuento
+
+                    st.success(
+                        "Empleado actualizado correctamente."
+                    )
+
+
+    # =====================================================
+    # ELIMINAR
+    # =====================================================
+
+    st.subheader("Eliminar empleado")
+
+    if len(st.session_state.empleados) > 0:
+
+        empleado_eliminar = st.selectbox(
+            "Seleccione el empleado a eliminar:",
+            nombres,
+            key="empleado_eliminar"
+        )
+
+        if st.button("Eliminar empleado"):
+
+            for empleado in st.session_state.empleados:
+
+                if empleado.nombre == empleado_eliminar:
+
+                    st.session_state.empleados.remove(
+                        empleado
+                    )
+
+                    st.success(
+                        "Empleado eliminado correctamente."
+                    )
+
