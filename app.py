@@ -2,7 +2,7 @@ import streamlit as st
 
 st.sidebar.title("Módulo")
 
-st.sidebar.image("IMAGEN DMC.png", width=150)
+st.sidebar.image("IMAGEN DMC.png", width=100)
 
 modulos = st.sidebar.selectbox(
     "Seleccione un módulo:",["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
