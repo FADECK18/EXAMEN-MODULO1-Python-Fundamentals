@@ -129,12 +129,107 @@ elif modulos == "Ejercicio 1":
     else:
         st.markdown("Todavía no hay movimientos registrados.")
 
-
-
 elif modulos == "Ejercicio 2":
 
-    st.title("Ejercicio 2")
-    st.markdown("Bienvenido al **Ejercicio 2**")
+    st.title("Ejercicio 2 - Registro con NumPy, Arrays y DataFrame")
+
+    st.markdown(
+        """
+        En este ejercicio se registrarán productos utilizando arreglos de NumPy.
+        Cada registro contiene el nombre del producto, categoría, precio, cantidad
+        y total. Los datos registrados serán convertidos en un DataFrame para
+        mostrar la información actualizada en pantalla.
+        """
+    )
+
+    # Crear los arrays
+    if "productos" not in st.session_state:
+        st.session_state.productos = np.array([])
+        st.session_state.categorias = np.array([])
+        st.session_state.precios = np.array([])
+        st.session_state.cantidades = np.array([])
+        st.session_state.totales = np.array([])
+
+    # Formulario de ingreso de datos
+    nombre = st.text_input("Nombre del producto:")
+
+    categoria = st.selectbox(
+        "Seleccione la categoría:",
+        ["Alimentos", "Bebidas", "Limpieza", "Tecnología", "Otros"]
+    )
+
+    precio = st.number_input(
+        "Precio del producto:",
+        min_value=0.0,
+        step=0.01
+    )
+
+    cantidad = st.number_input(
+        "Cantidad:",
+        min_value=1,
+        step=1
+    )
+
+    # Calcular el total
+    total = precio * cantidad
+
+    st.markdown(f"**Total del registro: S/ {total:.2f}**")
+
+    # Botón para agregar registro
+    if st.button("Agregar registro"):
+
+        if nombre == "":
+            st.error("Ingrese el nombre del producto.")
+
+        elif precio == 0:
+            st.error("Ingrese un precio mayor a 0.")
+
+        else:
+
+            # Agregar información a los arrays
+            st.session_state.productos = np.append(
+                st.session_state.productos,
+                nombre
+            )
+
+            st.session_state.categorias = np.append(
+                st.session_state.categorias,
+                categoria
+            )
+
+            st.session_state.precios = np.append(
+                st.session_state.precios,
+                precio
+            )
+
+            st.session_state.cantidades = np.append(
+                st.session_state.cantidades,
+                cantidad
+            )
+
+            st.session_state.totales = np.append(
+                st.session_state.totales,
+                total
+            )
+
+            st.success("Registro agregado correctamente.")
+
+    # Crear DataFrame
+    datos = {
+        "Producto": st.session_state.productos,
+        "Categoría": st.session_state.categorias,
+        "Precio": st.session_state.precios,
+        "Cantidad": st.session_state.cantidades,
+        "Total": st.session_state.totales
+    }
+
+    df = pd.DataFrame(datos)
+
+    # Mostrar DataFrame
+    st.subheader("Registros de productos")
+
+    st.dataframe(df)
+
 
 elif modulos == "Ejercicio 3":
 
