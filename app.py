@@ -25,16 +25,10 @@ if modulos == "Home":
     st.write("2026")
 
     st.write("### Breve descripción del proyecto")
-    st.write(
-        "El proyecto facilita la aplicación práctica de lo aprendido "
-        "en clase, consolidando los contenidos del primer módulo de "
-        "Python Fundamentals."
-    )
+    st.write("El proyecto facilita la aplicación práctica de lo aprendido en clase, consolidando los contenidos del primer módulo de Python Fundamentals.")
 
     st.write("### Tecnologías utilizadas")
-    st.write(
-        "Python, Streamlit y GitHub."
-    )
+    st.write("Python, Streamlit y GitHub.")
 
 elif modulos == "Ejercicio 1":
 
