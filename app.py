@@ -12,13 +12,13 @@ if modulos == "Home":
     st.title("Proyecto Python for Analytics")
     st.image("foto de python.jpg", width=450)
 
-    st.write("#Nombre completo del estudiante")
+    st.write("# Nombre completo del estudiante")
     st.write("Farid Estefano Garibay Fabian")
 
-    st.write("#Nombre del módulo")
+    st.write("# Nombre del módulo")
     st.write("Python Fundamentals")
 
-    st.write("### Información general del estudiante")
+    st.write("# Información general del estudiante")
     st.write(
         "Soy contador y busco especializarme en análisis de datos "
         "para combinar mi experiencia financiera con nuevas herramientas "
