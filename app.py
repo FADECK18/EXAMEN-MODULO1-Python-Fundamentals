@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 
 st.title("Proyecto Python for Analytics")
-st.sidebar.title("Modulo")
+st.sidebar.title("Módulo")
 st.write("Elaborado por: Farid Estefano Garibay Fabian")
 
 st.image("foto de python.jpg", width = 450)
