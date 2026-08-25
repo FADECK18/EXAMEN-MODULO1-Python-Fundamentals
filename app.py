@@ -12,22 +12,6 @@ if modulos == "Home":
     st.title("APLICACIÓN EN STREAMLIT")
     st.image("foto de python.jpg", width=500)
 
-     st.subheader("👨‍🎓 Información del estudiante")
-
-    st.markdown(
-        """
-        **Nombre completo del estudiante:**  
-        Farid Estefano Garibay Fabian
-        """
-    )
-
-    st.markdown(
-        """
-        **Nombre del módulo:**  
-        Python Fundamentals
-        """
-    )
-
     st.write("### Nombre completo del estudiante")
     st.write("Farid Estefano Garibay Fabian")
 
