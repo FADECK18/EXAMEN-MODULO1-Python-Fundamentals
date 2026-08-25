@@ -12,7 +12,8 @@ modulos = st.sidebar.selectbox(
 if modulos == "Home":
 
     st.title("APLICACIÓN EN STREAMLIT")
-    st.image("foto de python.jpg", width=500)
+    st.image("foto de python.jpg")
+    st.write("Docente: Carlos Carrillo Villavicencio")
 
     st.subheader("Nombre completo del estudiante")
     st.markdown("Farid Estefano Garibay Fabian")
