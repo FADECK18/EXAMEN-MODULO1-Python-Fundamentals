@@ -118,14 +118,7 @@ elif modulos == "Ejercicio 2":
 
     st.title("Ejercicio 2 - Registro con NumPy, Arrays y DataFrame")
 
-    st.markdown(
-        """
-        En este ejercicio se registrarán productos utilizando arreglos de NumPy.
-        Cada registro contiene el nombre del producto, categoría, precio, cantidad
-        y total. Los datos registrados serán convertidos en un DataFrame para
-        mostrar la información actualizada en pantalla.
-        """
-    )
+    st.markdown("""En este ejercicio se registrarán productos utilizando arreglos de NumPy. Cada registro contiene el nombre del producto, categoría, precio, cantidad y total. Los datos registrados serán convertidos en un DataFrame para mostrar la información actualizada en pantalla.""")
 
     # Crear los arrays
     if "productos" not in st.session_state:
@@ -138,22 +131,11 @@ elif modulos == "Ejercicio 2":
     # Formulario de ingreso de datos
     nombre = st.text_input("Nombre del producto:")
 
-    categoria = st.selectbox(
-        "Seleccione la categoría:",
-        ["Alimentos", "Bebidas", "Limpieza", "Tecnología", "Otros"]
-    )
+    categoria = st.selectbox("Seleccione la categoría:",["Alimentos", "Bebidas", "Limpieza", "Tecnología", "Otros"])
 
-    precio = st.number_input(
-        "Precio del producto:",
-        min_value=0.0,
-        step=0.01
-    )
+    precio = st.number_input("Precio del producto:", min_value=0.0, step=0.01)
 
-    cantidad = st.number_input(
-        "Cantidad:",
-        min_value=1,
-        step=1
-    )
+    cantidad = st.number_input("Cantidad:", min_value=1, step=1)
 
     # Calcular el total
     total = precio * cantidad
