@@ -47,5 +47,7 @@ elif modulos == "Ejercicio 3":
 
 elif modulos == "Ejercicio 4":
 
-    st.title("Ejercicio 4")
-    st.write("Bienvenido al Ejercicio 4")
+    st.subheader("🚀 Ejercicio 4")
+    st.markdown(
+        """
+        ### Desarrollo del Ejercicio 4
