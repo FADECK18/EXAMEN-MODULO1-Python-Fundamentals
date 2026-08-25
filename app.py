@@ -203,25 +203,21 @@ elif modulos == "Ejercicio 3":
 
     st.dataframe(df_historico)
 
-from libreria_clases_proyecto1 import InventarioProducto
-import pandas as pd
-
-    elif modulos == "Ejercicio 4":
-
-    ...
+elif modulos == "Ejercicio 4":
 
     st.title("Ejercicio 4 - Inventario con CRUD")
 
     st.markdown("""
-    En este ejercicio se utilizará la clase InventarioProducto de una
-    librería externa para gestionar productos de inventario mediante
-    operaciones CRUD: Crear, Leer, Actualizar y Eliminar.
+    En este ejercicio se utilizará la clase InventarioProducto
+    para gestionar productos mediante las operaciones CRUD:
+    Crear, Leer, Actualizar y Eliminar.
     """)
 
-    # Crear lista de productos
+    # Crear lista de inventario
     if "inventario" not in st.session_state:
         st.session_state.inventario = []
 
+    # CREAR
     st.subheader("Crear producto")
 
     nombre = st.text_input("Nombre del producto:")
@@ -268,7 +264,6 @@ import pandas as pd
     datos = []
 
     for producto in st.session_state.inventario:
-
         datos.append(producto.resumen())
 
     df = pd.DataFrame(datos)
@@ -304,7 +299,9 @@ import pandas as pd
 
                     producto.stock_actual = nuevo_stock
 
-                    st.success("Producto actualizado correctamente.")
+                    st.success(
+                        "Producto actualizado correctamente."
+                    )
 
     # ELIMINAR
     st.subheader("Eliminar producto")
@@ -325,4 +322,8 @@ import pandas as pd
 
                     st.session_state.inventario.remove(producto)
 
-                    st.success("Producto eliminado correctamente.")
+                    st.success(
+                        "Producto eliminado correctamente."
+                    )
+
+   
