@@ -15,29 +15,22 @@ if modulos == "Home":
     st.image("foto de python.jpg", width=500)
 
     st.subheader("Nombre completo del estudiante")
-    st.markdown("**Farid Estefano Garibay Fabian**")
+    st.markdown("Farid Estefano Garibay Fabian")
 
     st.subheader("Nombre del módulo")
-    st.markdown("**Python Fundamentals**")
+    st.markdown("Python Fundamentals")
 
     st.subheader("Información general del estudiante")
-    st.markdown(
-        "Soy contador y busco especializarme en análisis de datos para "
-        "combinar mi experiencia financiera con nuevas herramientas "
-        "tecnológicas y así potenciar mi perfil profesional."
-    )
+    st.markdown("Soy contador y busco especializarme en análisis de datos para combinar mi experiencia financiera con nuevas herramientas tecnológicas y así potenciar mi perfil profesional.")
 
     st.subheader("Año")
-    st.markdown("**2026**")
+    st.markdown("2026")
 
     st.subheader("Breve descripción del proyecto")
-    st.markdown(
-        "El proyecto facilita la aplicación práctica de lo aprendido en clase, "
-        "consolidando los contenidos del primer módulo de Python Fundamentals."
-    )
+    st.markdown("El proyecto facilita la aplicación práctica de lo aprendido en clase, consolidando los contenidos del primer módulo de Python Fundamentals.")
 
     st.subheader("Tecnologías utilizadas")
-    st.markdown("**Python**, **Streamlit** y **GitHub**.")
+    st.markdown("Python, Streamlit y GitHub.")
 
 elif modulos == "Ejercicio 1":
 
