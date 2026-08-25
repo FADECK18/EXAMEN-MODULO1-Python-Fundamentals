@@ -1,9 +1,7 @@
 import streamlit as st
 
-st.title("PROYECTO 1 - APLICACIÓN EN STREAMLIT")
+st.title("Proyecto Python for Analytics")
 st.sidebar.title("Módulo")
-
-st.write("Elaborado por: Farid Estefano Garibay Fabian")
 
 st.sidebar.image("IMAGEN DMC.png", width=100)
 
