@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.sidebar.title("Módulo")
-st.sidebar.image("IMAGEN DMC.png", width=100)
+st.sidebar.image("IMAGEN DMC.png", width=200)
 
 modulos = st.sidebar.selectbox(
     "Seleccione un módulo:",
@@ -9,11 +9,10 @@ modulos = st.sidebar.selectbox(
 
 if modulos == "Home":
 
-    st.title("PROYECTO 1 - APLICACIÓN EN STREAMLIT")
-
+    st.title("Proyecto Python for Analytics")
     st.image("foto de python.jpg", width=450)
 
-    st.write("### Nombre completo del estudiante")
+    st.write("Nombre completo del estudiante")
     st.write("Farid Estefano Garibay Fabian")
 
     st.write("### Nombre del módulo")
