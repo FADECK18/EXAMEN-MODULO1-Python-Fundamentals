@@ -1,11 +1,5 @@
 import streamlit as st
 
-st.set_page_config(
-    page_title="PROYECTO 1 - APLICACIÓN EN STREAMLIT",
-    page_icon="🐍",
-    layout="wide"
-)
-
 st.title("PROYECTO 1 - APLICACIÓN EN STREAMLIT")
 st.sidebar.title("Módulo")
 
