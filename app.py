@@ -42,18 +42,15 @@ elif modulos == "Ejercicio 1":
 
     st.markdown("""En este ejercicio se registrarán movimientos financieros utilizando una lista. Cada movimiento tendrá un concepto, un tipo de movimiento y un valor. El sistema calculará el total de ingresos, el total de gastos y el saldo final del flujo de caja.""")
 
-    # Crear la lista de movimientos
     if "movimientos" not in st.session_state:
         st.session_state.movimientos = []
 
-    # Ingreso de datos
     concepto = st.text_input("Ingrese el concepto:")
 
     tipo = st.selectbox("Seleccione el tipo de movimiento:",["Ingreso", "Gasto"])
 
     valor = st.number_input("Ingrese el valor:",min_value=0.0,step=0.01)
 
-    # Botón para agregar movimiento
     if st.button("Agregar movimiento"):
 
         if concepto == "":
@@ -69,7 +66,6 @@ elif modulos == "Ejercicio 1":
 
             st.success("Movimiento agregado correctamente.")
 
-    # Mostrar movimientos registrados
     st.subheader("Movimientos registrados")
 
     if len(st.session_state.movimientos) > 0:
@@ -88,10 +84,8 @@ elif modulos == "Ejercicio 1":
             else:
                 total_gastos += movimiento["Valor"]
 
-        # Calcular saldo
         saldo_final = total_ingresos - total_gastos
 
-        # Mostrar resultados
         st.subheader("Resultado del flujo de caja")
 
         col1, col2, col3 = st.columns(3)
@@ -105,7 +99,6 @@ elif modulos == "Ejercicio 1":
         with col3:
             st.metric("Saldo final", f"S/ {saldo_final:.2f}")
 
-        # Estado del flujo de caja
         if saldo_final >= 0:
             st.success("El flujo de caja está a favor.")
         else:
@@ -120,7 +113,6 @@ elif modulos == "Ejercicio 2":
 
     st.markdown("""En este ejercicio se registrarán productos utilizando arreglos de NumPy. Cada registro contiene el nombre del producto, categoría, precio, cantidad y total. Los datos registrados serán convertidos en un DataFrame para mostrar la información actualizada en pantalla.""")
 
-    # Crear los arrays
     if "productos" not in st.session_state:
         st.session_state.productos = np.array([])
         st.session_state.categorias = np.array([])
@@ -128,7 +120,6 @@ elif modulos == "Ejercicio 2":
         st.session_state.cantidades = np.array([])
         st.session_state.totales = np.array([])
 
-    # Formulario de ingreso de datos
     nombre = st.text_input("Nombre del producto:")
 
     categoria = st.selectbox("Seleccione la categoría:",["Alimentos", "Bebidas", "Limpieza", "Tecnología", "Otros"])
@@ -137,12 +128,10 @@ elif modulos == "Ejercicio 2":
 
     cantidad = st.number_input("Cantidad:", min_value=1, step=1)
 
-    # Calcular el total
     total = precio * cantidad
 
     st.markdown(f"**Total del registro: S/ {total:.2f}**")
 
-    # Botón para agregar registro
     if st.button("Agregar registro"):
 
         if nombre == "":
@@ -153,7 +142,6 @@ elif modulos == "Ejercicio 2":
 
         else:
 
-            # Agregar información a los arrays
             st.session_state.productos = np.append(st.session_state.productos,nombre)
 
             st.session_state.categorias = np.append(st.session_state.categorias,categoria)
@@ -166,12 +154,10 @@ elif modulos == "Ejercicio 2":
 
             st.success("Registro agregado correctamente.")
 
-    # Crear DataFrame
     datos = {"Producto": st.session_state.productos,"Categoría": st.session_state.categorias,"Precio": st.session_state.precios,"Cantidad": st.session_state.cantidades,"Total": st.session_state.totales}
 
     df = pd.DataFrame(datos)
 
-    # Mostrar DataFrame
     st.subheader("Registros de productos")
 
     st.dataframe(df)
@@ -182,26 +168,21 @@ elif modulos == "Ejercicio 3":
 
     st.markdown("""En este ejercicio se utilizará una función de una librería externa para calcular la cuota mensual de un préstamo bajo el sistema francés. El usuario podrá ingresar el monto, la tasa anual y el plazo del préstamo. Los resultados obtenidos se almacenarán en un histórico.""")
 
-    # Selector de función
     funcion = st.selectbox("Seleccione una función:",["Calcular cuota de préstamo francés"])
 
-    # Widgets para ingresar los parámetros
     monto = st.number_input("Ingrese el monto del préstamo:", min_value=1.0, step=100.0)
 
     tasa_anual = st.number_input("Ingrese la tasa anual (%):", min_value=0.0, step=0.1)
 
     plazo_meses = st.number_input("Ingrese el plazo en meses:", min_value=1, step=1)
 
-    # Crear histórico
     if "historico_prestamos" not in st.session_state:
         st.session_state.historico_prestamos = []
 
-    # Botón para ejecutar la función
     if st.button("Calcular préstamo"):
 
         resultado = calcular_cuota_prestamo_frances(monto, tasa_anual, plazo_meses)
 
-        # Mostrar resultado
         st.subheader("Resultado del préstamo")
 
         st.write(f"Cuota mensual: S/ {resultado['cuota_mensual']:.2f}")
@@ -210,17 +191,14 @@ elif modulos == "Ejercicio 3":
 
         st.write(f"Interés total: S/ {resultado['interes_total']:.2f}")
 
-        # Guardar resultado en el histórico
         registro = {"Monto": monto, "Tasa anual (%)": tasa_anual, "Plazo (meses)": plazo_meses, "Cuota mensual": resultado["cuota_mensual"], "Total pagado": resultado["total_pagado"], "Interés total": resultado["interes_total"]}
 
         st.session_state.historico_prestamos.append(registro)
 
         st.success("Cálculo realizado correctamente.")
 
-    # Crear DataFrame histórico
     df_historico = pd.DataFrame(st.session_state.historico_prestamos)
 
-    # Mostrar histórico
     st.subheader("Histórico de resultados")
 
     st.dataframe(df_historico)
