@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+from libreria_funciones_proyecto1 import calcular_cuota_prestamo_frances
 
 st.sidebar.title("Módulo")
 
@@ -232,11 +233,202 @@ elif modulos == "Ejercicio 2":
 
     st.dataframe(df)
 
-
 elif modulos == "Ejercicio 3":
 
-    st.title("Ejercicio 3")
-    st.markdown("Bienvenido al **Ejercicio 3**")
+    st.title("Ejercicio 3 - Cálculo de préstamo")
+
+    st.markdown(
+        """
+        En este ejercicio se utilizará una función de una librería externa
+        para calcular la cuota mensual de un préstamo bajo el sistema francés.
+        El usuario podrá ingresar el monto, la tasa anual y el plazo del préstamo.
+        Los resultados obtenidos se almacenarán en un histórico.
+        """
+    )
+
+    # Selector de función
+    funcion = st.selectbox(
+        "Seleccione una función:",
+        ["Calcular cuota de préstamo francés"]
+    )
+
+    # Widgets para ingresar los parámetros
+    monto = st.number_input(
+        "Ingrese el monto del préstamo:",
+        min_value=1.0,
+        step=100.0
+    )
+
+    tasa_anual = st.number_input(
+        "Ingrese la tasa anual (%):",
+        min_value=0.0,
+        step=0.1
+    )
+
+    plazo_meses = st.number_input(
+        "Ingrese el plazo en meses:",
+        min_value=1,
+        step=1
+    )
+
+    # Crear histórico
+    if "historico_prestamos" not in st.session_state:
+        st.session_state.historico_prestamos = []
+
+    # Botón para ejecutar la función
+    if st.button("Calcular préstamo"):
+
+        resultado = calcular_cuota_prestamo_frances(
+            monto,
+            tasa_anual,
+            plazo_meses
+        )
+
+        # Mostrar resultado
+        st.subheader("Resultado del préstamo")
+
+        st.write(
+            f"Cuota mensual: S/ {resultado['cuota_mensual']:.2f}"
+        )
+
+        st.write(
+            f"Total pagado: S/ {resultado['total_pagado']:.2f}"
+        )
+
+        st.write(
+            f"Interés total: S/ {resultado['interes_total']:.2f}"
+        )
+
+        # Guardar resultado en el histórico
+        registro = {
+            "Monto": monto,
+            "Tasa anual (%)": tasa_anual,
+            "Plazo (meses)": plazo_meses,
+            "Cuota mensual": resultado["cuota_mensual"],
+            "Total pagado": resultado["total_pagado"],
+            "Interés total": resultado["interes_total"]
+        }
+
+        st.session_state.historico_prestamos.append(registro)
+
+        st.success("Cálculo realizado correctamente.")
+
+    # Crear DataFrame histórico
+    df_historico = pd.DataFrame(
+        st.session_state.historico_prestamos
+    )
+
+    # Mostrar histórico
+    st.subheader("Histórico de resultados")
+
+    st.dataframe(df_historico)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 elif modulos == "Ejercicio 4":
 
