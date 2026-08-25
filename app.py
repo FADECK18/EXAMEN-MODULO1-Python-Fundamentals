@@ -154,30 +154,15 @@ elif modulos == "Ejercicio 2":
         else:
 
             # Agregar información a los arrays
-            st.session_state.productos = np.append(
-                st.session_state.productos,
-                nombre
-            )
+            st.session_state.productos = np.append(st.session_state.productos,nombre)
 
-            st.session_state.categorias = np.append(
-                st.session_state.categorias,
-                categoria
-            )
+            st.session_state.categorias = np.append(st.session_state.categorias,categoria)
 
-            st.session_state.precios = np.append(
-                st.session_state.precios,
-                precio
-            )
+            st.session_state.precios = np.append(st.session_state.precios,precio)
 
-            st.session_state.cantidades = np.append(
-                st.session_state.cantidades,
-                cantidad
-            )
+            st.session_state.cantidades = np.append(st.session_state.cantidades,cantidad)
 
-            st.session_state.totales = np.append(
-                st.session_state.totales,
-                total
-            )
+            st.session_state.totales = np.append(st.session_state.totales,total)
 
             st.success("Registro agregado correctamente.")
 
