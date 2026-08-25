@@ -206,7 +206,9 @@ elif modulos == "Ejercicio 3":
 from libreria_clases_proyecto1 import InventarioProducto
 import pandas as pd
 
-elif modulos == "Ejercicio 4":
+    elif modulos == "Ejercicio 4":
+
+    ...
 
     st.title("Ejercicio 4 - Inventario con CRUD")
 
