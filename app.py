@@ -14,7 +14,7 @@ if modulos == "Home":
 st.image("foto de python.jpg", width = 450)
 st.title("PROYECTO 1 - APLICACIÓN EN STREAMLIT")
 
-st.write("Nombre completo del estudiante": Farid Estefano Garibay Fabian")
+st.write("Nombre completo del estudiante: Farid Estefano Garibay Fabian")
 st.write("Nombre del módulo: Python Fundamentals")
 st.write("Información general del estudiante: Soy contador y busco especializarme en análisis de datos para combinar mi experiencia financiera con nuevas herramientas tecnológicas y así potenciar mi perfil profesional")
 st.write("Año : 2026")
