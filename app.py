@@ -6,14 +6,13 @@ st.sidebar.image("IMAGEN DMC.png", width=100)
 
 modulos = st.sidebar.selectbox(
     "Seleccione un módulo:",
-    ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"]
-)
+    ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
 
 if modulos == "Home":
 
     st.title("APLICACIÓN EN STREAMLIT")
     st.image("foto de python.jpg")
-    st.write("Docente: Carlos Carrillo Villavicencio")
+    st.write("**Docente**: Carlos Carrillo Villavicencio")
 
     st.subheader("Nombre completo del estudiante")
     st.markdown("Farid Estefano Garibay Fabian")
